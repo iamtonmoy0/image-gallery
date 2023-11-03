@@ -54,6 +54,23 @@ const ImageGallery = () => {
 	const [image,setImage]=useState(imageArray);
 	const [selected,setSelected]=useState([]);
 
+		// handle select
+const handleSelected=(e)=>{
+	const { value, checked } = e.target;
+    if (checked) {
+      setSelected((prev) => [...prev, value]);
+    } else {
+      setSelected((prev) => prev.filter((item) => item !== value));
+    }
+}
+// handle delete
+const handleDelete=()=>{
+	// Filter out the selected images and update the state
+	const updatedImage = image.filter(img => !selected.includes(img.id));
+	setImage(updatedImage)
+	// Clear the selected state
+	setSelected([]);
+}
 	// sort end function
 	const handleOnSortEnd = (oldIndex, newIndex) => {
 		setImage((array) => arrayMoveImmutable(array, oldIndex, newIndex))
@@ -81,7 +98,7 @@ const ImageGallery = () => {
 				type="checkbox"
 				value={img.id}
 				className="absolute mt-5 ml-5 hover:z-10 cursor-pointer opacity-0  "
-				// onChange={handleSelected}
+				onChange={handleSelected}
 				/>
 {/* image */}
 			<div key={img.id}  id="single-image" >
