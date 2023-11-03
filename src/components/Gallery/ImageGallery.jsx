@@ -93,7 +93,7 @@ const handleDelete=()=>{
 			{image.map((img)=>
 			<SortableItem key={img.id}>
 				<div id="image-size" className=" relative hover:brightness-[60%] hover:bg-slate-100 rounded-[20px]" >
-				{/* input */}
+{/* input */}
 				<input
 				type="checkbox"
 				value={img.id}
