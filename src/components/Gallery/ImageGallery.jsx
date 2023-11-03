@@ -72,23 +72,22 @@ const ImageGallery = () => {
 			</div>
 			}
 			<hr />
-			<SortableList onSortEnd={handleOnSortEnd} draggedItemClassName="dragged" className=" w-11/12 mx-auto py-6 " id="gallery" >
+			<SortableList onSortEnd={handleOnSortEnd}  className=" w-11/12 mx-auto py-6 " id="gallery" >
 			{image.map((img)=>
 			<SortableItem key={img.id}>
-			<div key={img.id}  id="single-image">
-				<div className=" relative hover:brightness-[60%] hover:bg-slate-100 rounded-[20px]">
-						{/* input */}
+				<div id="image-size" className=" relative hover:brightness-[60%] hover:bg-slate-100 rounded-[20px]" >
+				{/* input */}
 				<input
 				type="checkbox"
 				value={img.id}
-				className="absolute mt-5 ml-5 cursor-pointer opacity-0 "
+				className="absolute mt-5 ml-5 hover:z-10 cursor-pointer opacity-0  "
 				// onChange={handleSelected}
 				/>
-
-				{/* image */}
+{/* image */}
+			<div key={img.id}  id="single-image" >
 				<img  src={img.src} className=""/>
 				</div>
-			</div>
+				</div>
 			</SortableItem>
 			)}
 			{/* add image */}
