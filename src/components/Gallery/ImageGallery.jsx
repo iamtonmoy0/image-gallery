@@ -51,6 +51,7 @@ const imageArray = [
 const ImageGallery = () => {
 	const [image,setImage]=useState(imageArray);
 	const [selected,setSelected]=useState([]);
+	
 	return (
 		<div className="bg-white w-11/12 mx-auto  rounded-md h-auto mt-14">
 			{selected && selected.length > 0 ?

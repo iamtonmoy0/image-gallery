@@ -1,3 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+body{
+	background-color: aliceblue;
+}
+/* image gallery */
+#gallery{
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	grid-column-gap: 30px;
+	grid-row-gap: 30px;
+	transition: all 1.8s ease-in ;
+}
+/* single image style */
+#single-image{
+	border: 1px solid rgb(163, 163, 163);
+	border-radius: 20px;
+	transition: all 2s step-end;
+	
+}
+#single-image img {
+	border-radius: 20px;
+	max-width: 100%;
+    height: auto;
+	z-index: 0;
+
+
+}
+/* checkbox hover  */
+#single-image:hover input[type="checkbox"]{
+	z-index: 40;
+	opacity: 1;
+}
+#single-image input:checked {
+	display: block;
+	opacity: 1;
+}
+/* first child span size */
+#single-image:nth-child(1){
+	grid-area: 1 / 1/ 3 / 3;
+
+}
+
