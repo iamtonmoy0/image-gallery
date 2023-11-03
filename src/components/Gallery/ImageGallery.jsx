@@ -77,7 +77,7 @@ const handleDelete=()=>{
 	}
 	
 	return (
-		<div className="bg-white w-11/12 mx-auto  rounded-md h-auto mt-14">
+		<div className="bg-white w-11/12 mx-auto  rounded-md h-auto mt-14 mb-14">
 			{selected && selected.length > 0 ?
 			<div className="h-14 rounded-t-md flex items-center justify-between">
 				<p className="font-semibold text-md flex flex-row   ml-10"><ImCheckboxChecked className="text-blue-500 self-center mr-3"/> {selected.length} File Selected</p>	
