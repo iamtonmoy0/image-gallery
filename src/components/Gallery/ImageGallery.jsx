@@ -1,6 +1,8 @@
 import { useState } from "react";
 import {PiImageBold} from 'react-icons/pi';
 import {ImCheckboxChecked} from 'react-icons/im';
+import SortableList, { SortableItem } from "react-easy-sort";
+import { arrayMoveImmutable } from "array-move";
 const imageArray = [
 	{
 	  id: "1",
@@ -51,6 +53,11 @@ const imageArray = [
 const ImageGallery = () => {
 	const [image,setImage]=useState(imageArray);
 	const [selected,setSelected]=useState([]);
+
+	// sort end function
+	const handleOnSortEnd = (oldIndex, newIndex) => {
+		setImage((array) => arrayMoveImmutable(array, oldIndex, newIndex))
+	}
 	
 	return (
 		<div className="bg-white w-11/12 mx-auto  rounded-md h-auto mt-14">
@@ -65,8 +72,9 @@ const ImageGallery = () => {
 			</div>
 			}
 			<hr />
-			<div  className=" w-11/12 mx-auto py-6 " id="gallery">
-			{image.map((img,index)=>
+			<SortableList onSortEnd={handleOnSortEnd} draggedItemClassName="dragged" className=" w-11/12 mx-auto py-6 " id="gallery" >
+			{image.map((img)=>
+			<SortableItem key={img.id}>
 			<div key={img.id}  id="single-image">
 				<div className=" relative hover:brightness-[60%] hover:bg-slate-100 rounded-[20px]">
 						{/* input */}
@@ -81,6 +89,7 @@ const ImageGallery = () => {
 				<img  src={img.src} className=""/>
 				</div>
 			</div>
+			</SortableItem>
 			)}
 			{/* add image */}
 			<div className="rounded-xl  outline-1 outline-dashed outline-gray-300 bg-gray-300 flex items-center justify-center h-full">
@@ -91,7 +100,7 @@ const ImageGallery = () => {
   <input type="file" id="file-input" className="hidden" />
 </div>
 
-			</div>
+			</SortableList>
 
 		</div>
 	);
